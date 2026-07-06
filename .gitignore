@@ -12,6 +12,9 @@ venv/
 env/
 .venv/
 
+env.example/
+env.example
+
 # OS
 .DS_Store
 Thumbs.db
