@@ -1,0 +1,54 @@
+{
+  "slot_schema": {
+    "지역": {
+      "type": "categorical",
+      "description": "사용자가 찾는 지역 (구/동/역 단위)",
+      "example_values": ["강남구", "성동구", "홍대", "신촌역"],
+      "required": false
+    },
+    "거래유형": {
+      "type": "categorical",
+      "description": "전세 또는 월세",
+      "allowed_values": ["전세", "월세"],
+      "required": false
+    },
+    "주거유형": {
+      "type": "categorical",
+      "description": "주거 형태",
+      "allowed_values": ["원룸", "투룸", "오피스텔"],
+      "required": false
+    },
+    "층조건": {
+      "type": "categorical",
+      "description": "선호하는 층 조건",
+      "allowed_values": ["반지하", "1층", "저층", "중층", "고층"],
+      "required": false
+    },
+    "근접시설": {
+      "type": "categorical",
+      "description": "인근에 있었으면 하는 시설",
+      "allowed_values": ["역세권", "대학가 인근", "학교 근처", "마트 도보 5분", "버스정류장 인접"],
+      "required": false
+    },
+    "가격_최소": {
+      "type": "numeric",
+      "description": "월세 또는 보증금 최소 금액 (단위: 만원)",
+      "required": false
+    },
+    "가격_최대": {
+      "type": "numeric",
+      "description": "월세 또는 보증금 최대 금액 (단위: 만원)",
+      "required": false
+    },
+    "면적_최소": {
+      "type": "numeric",
+      "description": "최소 평수 또는 면적",
+      "required": false
+    }
+  },
+  "notes": {
+    "폴리시": "모든 슬롯은 optional입니다. 사용자가 언급하지 않은 슬롯은 null로 둡니다. 절대 임의로 값을 추측해서 채우지 않습니다.",
+    "가격단위": "가격은 항상 '만원' 단위 정수로 정규화합니다 (예: '50만원' -> 50, '5000만원' -> 5000).",
+    "부정표현": "‘반지하 말고’, ‘옵션 없어도 됨’ 같은 부정 표현은 해당 슬롯을 비워두거나(null), 별도 exclude 필드로 처리하는 것을 권장합니다. 이 스키마는 기본형이라 exclude는 v2에서 확장 가능합니다."
+  }
+}

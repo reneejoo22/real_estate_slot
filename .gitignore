@@ -1,0 +1,27 @@
+# API 키 등 민감 정보 (절대 커밋 금지)
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# 가상환경
+venv/
+env/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# 실행 결과로 생성되는 파일 (필요하면 이 줄들은 지우고 같이 올려도 됨)
+# eval_results.csv
+# eval_summary.csv
+# synthetic_listings.csv
+# test_cases.csv
