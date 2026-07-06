@@ -4,17 +4,22 @@ slot_schema.json에 정의된 범주형 슬롯의 모든 조합(카테시안 곱
 매물 데이터를 생성하고, 비범주형 슬롯(가격, 평수)은 지역/유형에 맞는
 현실적인 랜덤 값으로 채우는 스크립트.
 """
-
 import json
 import itertools
 import random
+import os
 
 import pandas as pd
 
 random.seed(42)
 
+# 이 스크립트 파일 위치를 기준으로 db 폴더를 찾는다.
+# make_data/ 안에서 실행하든, 프로젝트 루트에서 실행하든 항상 동작한다.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_DIR = os.path.join(BASE_DIR, "..", "db")
+
 # ── slot_schema.json 로드 ────────────────────────────────────────
-with open("slot_schema.json", encoding="utf-8") as f:
+with open(os.path.join(DB_DIR, "slot_schema.json"), encoding="utf-8") as f:
     schema = json.load(f)["slot_schema"]
 
 REGIONS = ["강남구", "성동구", "마포구", "관악구", "노원구", "송파구"]
@@ -92,4 +97,4 @@ if __name__ == "__main__":
     df = generate_full_combination_dataset(rows_per_combo=1)
     print(f"생성된 조합 수(=행 수): {len(df)}")
     print(df.head(10))
-    df.to_csv("synthetic_listings.csv", index=False, encoding="utf-8-sig")
+    df.to_csv(os.path.join(DB_DIR, "synthetic_listings.csv"), index=False, encoding="utf-8-sig")

@@ -10,6 +10,9 @@ listings_augmented.csv(augment_data.py 결과)를 바탕으로,
 
 import random
 import pandas as pd
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_DIR = os.path.join(BASE_DIR, "..", "db")
 
 random.seed(7)
 
@@ -100,9 +103,10 @@ def generate_test_set(listings_df: pd.DataFrame, n: int = 30) -> pd.DataFrame:
     return pd.DataFrame(cases)
 
 
+
 if __name__ == "__main__":
-    listings = pd.read_csv("synthetic_listings.csv")
+    listings = pd.read_csv(os.path.join(DB_DIR, "synthetic_listings.csv"))
     test_df = generate_test_set(listings, n=30)
-    test_df.to_csv("test_cases.csv", index=False, encoding="utf-8-sig")
+    test_df.to_csv(os.path.join(DB_DIR, "test_cases.csv"), index=False, encoding="utf-8-sig")
     print(f"[저장 완료] test_cases.csv ({len(test_df)}행)")
     print(test_df.head(5))

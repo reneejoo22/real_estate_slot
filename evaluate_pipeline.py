@@ -23,8 +23,8 @@ from langchain_pipeline import extract_slots, search_listings, format_results, S
 
 SLOT_NAMES = ["지역", "거래유형", "주거유형", "층조건", "근접시설", "가격_최소", "가격_최대", "면적_최소"]
 
-RESULT_CSV = "eval_results.csv"
-SUMMARY_CSV = "eval_summary.csv"
+RESULT_CSV = "result/eval_results.csv"
+SUMMARY_CSV = "result/eval_summary.csv"
 
 
 def normalize(value):
@@ -135,8 +135,8 @@ def compute_metrics(results_df: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def run_evaluation(test_cases_path: str = "test_cases.csv",
-                    listings_path: str = "synthetic_listings.csv",
+def run_evaluation(test_cases_path: str = "db/test_cases.csv",
+                    listings_path: str = "db/synthetic_listings.csv",
                     max_samples: int = None,
                     sleep_seconds: float = 15.0) -> None:
     test_df = pd.read_csv(test_cases_path)
