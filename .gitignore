@@ -19,6 +19,9 @@ env.example
 .DS_Store
 Thumbs.db
 
+# api
+api.md
+
 # IDE
 .vscode/
 .idea/
@@ -28,3 +31,5 @@ Thumbs.db
 # eval_summary.csv
 # synthetic_listings.csv
 # test_cases.csv
+# 임베딩 모델 캐시 (최초 1회 다운로드, 용량 크므로 git에는 안 올림)
+models_cache/
